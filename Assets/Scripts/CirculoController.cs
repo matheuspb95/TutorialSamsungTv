@@ -39,7 +39,7 @@ public class CirculoController : MonoBehaviour
             if (lerpValue >= 1)
             {
 
-                GameObject exp = explosion.Spawn(transform.position);
+                explosion.Spawn(transform.position);
                 //Utility.GetInstance().DestroyByTime(exp, 1);
 
                 scenemanager.LosePoint();

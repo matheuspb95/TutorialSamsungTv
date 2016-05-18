@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainSceneManager : MonoBehaviour {
     public float spawnTime;         //tempo de spawn dos circulos
@@ -14,18 +15,16 @@ public class MainSceneManager : MonoBehaviour {
     private int CircleLosed = 0;    //numero de circulos perdidos pelo player
     private Color initialColor;     //cor inicial da tela
     public Color finalColor;        //cor final da tela
-    public Texture2D cursorTexture;
+
+    private int Points;
+    public Text ScoreText;
 	// Use this for initialization
 	void Start () {
+        Points = 0;
         initialColor = Camera.main.backgroundColor;
         spawn = true;
         StartCoroutine(SpawnCircle()); //Spawna circulos periodiamente
-
-        SamsungTV.touchPadMode = SamsungTV.TouchPadMode.Mouse;  //modifica a forma como o touchpad do controle da tv vai funcionar
-        SamsungTV.gestureMode = SamsungTV.GestureMode.Mouse;    //Habilita controles por gestos 
-
-        Cursor.SetCursor(cursorTexture, new Vector2(cursorTexture.width / 2, cursorTexture.height / 2), CursorMode.Auto);
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -43,6 +42,9 @@ public class MainSceneManager : MonoBehaviour {
                     if (hit.collider.CompareTag("Circle"))
                     {
                         hit.collider.GetComponent<CirculoController>().OnClick();
+                    }else if (hit.collider.CompareTag("ExitCircle"))
+                    {
+                        SceneManager.LoadScene("Menu");
                     }
                 }
             }
@@ -64,6 +66,8 @@ public class MainSceneManager : MonoBehaviour {
 
     public void GainPoint() //quando o player clica em algum circulo
     {
+        Points++;
+        ScoreText.text = ""+Points;
         spawnTime -= spawnTimeReduction;    //Quando um circulo e clicado diminui o tempo de spawn dos circulos
         if (spawnTime < 0) spawnTime = 0;
         CircleLosed -= 2;

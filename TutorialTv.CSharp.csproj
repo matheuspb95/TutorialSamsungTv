@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\CirculoController.cs" />
     <Compile Include="Assets\Scripts\DestroyByTime.cs" />
     <Compile Include="Assets\Scripts\MainSceneManager.cs" />
+    <Compile Include="Assets\Scripts\MenuSceneManager.cs" />
     <Compile Include="Assets\Scripts\ObjectPool\Demo\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\ObjectPool\Demo\Scripts\Explosion.cs" />
     <Compile Include="Assets\Scripts\ObjectPool\Demo\Scripts\Turret.cs" />
