@@ -40,6 +40,13 @@ public class MenuSceneManager : MonoBehaviour {
                 }
             }
         }
+        if (Input.GetButtonDown("Cancel"))
+        {
+            StartCoroutine(FadeTitle(0.5f));
+            StartCoroutine(ReduceButton(0.5f, greenButton));
+            StartCoroutine(ReduceButton(0.5f, redButton));
+            StartCoroutine(ExitGame(1));
+        }
 	}
 
     IEnumerator StartMain(float time)

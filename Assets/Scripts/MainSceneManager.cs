@@ -42,12 +42,13 @@ public class MainSceneManager : MonoBehaviour {
                     if (hit.collider.CompareTag("Circle"))
                     {
                         hit.collider.GetComponent<CirculoController>().OnClick();
-                    }else if (hit.collider.CompareTag("ExitCircle"))
-                    {
-                        SceneManager.LoadScene("Menu");
                     }
                 }
             }
+        }
+        if (Input.GetButtonDown("Cancel"))
+        {
+            SceneManager.LoadScene("Menu");
         }
 	}
 
